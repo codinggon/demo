@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<div th:replace="layout/fragments.html :: head ('트리븐(TRIVN)', '삶의 다양한 가능성을 열다(Open your possibilities), 두산에너빌리티의 건설 브랜드 트리븐(TRIVN)은 변화의 중심에서 변하지 않는 집의 가치를 생각합니다.')"></div>
+<body>
+<div id="smooth-wrapper">
+	<div id="smooth-content">
+		<div th:replace="layout/fragments.html :: header ('')"></div>
+		<!-- content -->
+		<script>
+			const popup = document.getElementsByClassName('popup-container');
+			const handleCookie = {
+				setCookie: function (name, val, exp) {
+					var date = new Date();
+
+					date.setTime(date.getTime() + exp * 24 * 60 * 60 * 1000);
+
+					document.cookie = name + "=" + val + ";expires=" + date.toUTCString() + ";";
+				},
+				getCookie: function (name) {
+					var value = document.cookie.match("(^|;) ?" + name + "=([^;]*)(;|$)");
+					return value ? value[2] : null;
+				}
+			};
+
+			if(handleCookie.getCookie("today") === 'y'){
+				popup[0].style.display = 'none';
+			}
+
+			for(let i = 0; i < popup.length; i++){
+				popup[i].addEventListener('click', closePopup);
+			}
+
+			function closePopup(e){
+				const element = e.target;
+				if(element.tagName !== 'BUTTON'){
+					return;
+				}
+				if(element.classList.contains('button-close')){
+					element.closest('.popup-container').remove();
+				}
+				if(element.classList.contains('button-today-close')){
+					handleCookie.setCookie("today", "y", 1);
+					element.closest('.popup-container').remove();
+				}
+			}
+		</script>
+
+		<div class="loading">
+			<div class="load_logo">
+				<svg viewBox="0 0 401.9 112.02">
+					<path class="cls-1" d="M0 34.28 23.96 34.28 23.96 89.11 37.41 89.11 37.41 34.28 61.37 34.28 61.37 22.91 0 22.91 0 34.28z"/>
+					<path class="cls-1" d="M279.61 72.09 259.61 22.91 245.38 22.91 272.3 89.11 286.93 89.11 313.85 22.91 299.61 22.91 279.61 72.09z"/>
+					<path class="cls-1" d="M388.45 22.91 388.45 74.16 360.22 22.91 340.77 22.91 340.77 89.11 354.22 89.11 354.22 37.86 382.45 89.11 400 89.11 400 22.91 388.45 22.91z"/>
+					<path class="cls-1" d="M183.77 112.02 196.02 102.23 196.02 10.02 183.77 0 183.77 112.02z"/>
+					<path class="cls-1" d="M218.12 112.02 205.88 102.23 205.88 10.02 218.12 0 218.12 112.02z"/>
+					<path class="cls-1" d="M149.77,44.53c0-11.89-9.65-21.61-21.54-21.61h-36.46v66.19h13.45v-55.64h19.97c6.15,0,11.13,4.91,11.14,11.05,0,6.15-4.99,11.05-11.14,11.05h-12.23s25.85,33.53,25.85,33.53h16.19l-19.65-24.19c8.4-2.96,14.42-11,14.43-20.4z"/>
+				</svg>
+			</div>
+		</div>
+		<div class="main">
+			<section class="section-main">
+				<div class="background">
+					<video class="media media-desktop" src="/images/main/main_visual.mp4" loop muted playsinline></video>
+					<video class="media media-mobile" src="/images/main/main_visual_mo.mp4" loop muted playsinline></video>
+				</div>
+				<div class="controls">
+					<div class="sound">
+						<button class="toggle" type="button" data-state="muted" title="Sound"></button>
+					</div>
+				</div>
+			</section>
+			<section class="sec-about">
+				<div class="line-frames">
+					<div class="frames-wr">
+						<div class="video-container1">
+							<video type="video/mp4" src="/images/main/line.mp4" muted playsinline class="bg-video1"></video>
+						</div>
+					</div>
+					<div class="frames-wr reverse">
+						<div class="video-container1">
+							<video type="video/mp4" src="/images/main/line.mp4" muted playsinline class="bg-video1"></video>
+						</div>
+					</div>
+				</div>
+				<div class="about-cont">
+					<div class="bg-block">
+						<div class="bg"></div>
+					</div>
+					<div class="about-tit">
+						<h2><span>Open your possibilities</span></h2>
+						<h3><span>삶의 다양한 가능성을 열다</span></h3>
+					</div>
+					<div class="about-desc">
+						<h3 class="mo-none">
+							<div><span>인생에서 가장 큰 변화는 집과 함께 시작됩니다.</span></div>
+							<div><span>TRIVN 디자인은 삶의 다양한 가능성을 열어가는 문, </span></div>
+							<div><span>삶의 변화를 맞이하는 문을 상징합니다.</span></div>
+						</h3>
+						<h3 class="pc-none">
+							<div><span>인생에서 가장 큰 변화는</span></div>
+							<div><span>집과 함께 시작됩니다.</span></div>
+							<div><span>TRIVN 디자인은 삶의</span></div>
+							<div><span>다양한 가능성을 열어가는 문, </span></div>
+							<div><span>삶의 변화를 맞이하는 문을 상징합니다.</span></div>
+						</h3>
+					</div>
+				</div>
+			</section>
+			<section class="sec-brand">
+				<div class="brand-tit">
+					<h2>
+						<div><span>두산에너빌리티의 새로운 브랜드로 </span></div>
+						<div><span>한 단계 더 높은 가치를 제공합니다.</span></div>
+					</h2>
+				</div>
+				<div class="brand-cont">
+					<div class="big-thumb">
+						<ul>
+							<li class="on" data-id="tab1"><div class="bg"></div><img src="/images/main/brand_img02.jpg" alt=""></li>
+							<li data-id="tab2"><div class="bg"></div><img src="/images/main/brand_img01.jpg" alt=""></li>
+						</ul>
+					</div>
+					<ul class="brand-list">
+						<li class="on" data-id="tab1">
+							<a href="/brand/overview.php">
+								<div class="thumb"><img src="/images/main/brand_img01.jpg" alt=""></div>
+								<div class="txt">
+									<p>Overview</p>
+									<p>브랜드 소개</p>
+									<span class="more">자세히 보기</span>
+								</div>
+							</a>
+						</li>
+						<li data-id="tab2">
+							<a href="/brand/history.php">
+								<div class="thumb"><img src="/images/main/brand_img02.jpg" alt=""></div>
+								<div class="txt">
+									<p>History</p>
+									<p>사업 소개</p>
+									<span class="more">자세히 보기</span>
+								</div>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</section>
+			<section class="sec-mission">
+				<div class="pin">
+					<div class="rolling_tit">
+						<h2>Life</h2>
+						<h2>Society</h2>
+						<h2>Sustainability</h2>
+					</div>
+				</div>
+			</section>
+			<section class="sec-gallery">
+				<ul class="gallery-images">
+					<li>
+						<div class="img"><img src="/images/main/main_img01.jpg" alt=""></div>
+					</li>
+					<li>
+						<div class="img"><img src="/images/main/main_img02.jpg" alt=""></div>
+						<div class="img"><img src="/images/main/main_img03.jpg" alt=""></div>
+					</li>
+					<li>
+						<div class="img"><img src="/images/main/main_img04.jpg" alt=""></div>
+					</li>
+					<li>
+						<div class="img"><img src="/images/main/main_img05.jpg" alt=""></div>
+						<div class="img"><img src="/images/main/main_img06.jpg" alt=""></div>
+					</li>
+					<li>
+						<div class="img"><img src="/images/main/main_img07.jpg" alt=""></div>
+					</li>
+					<li>
+						<div class="img"><img src="/images/main/main_img08.jpg" alt=""></div>
+						<div class="img"><img src="/images/main/main_img09.jpg" alt=""></div>
+					</li>
+				</ul>
+			</section>
+		</div>
+
+		<script>
+			$('.header').addClass('hide');
+			$('.header').addClass('transparent');
+			//document.addEventListener("DOMContentLoaded", function () {
+			let media, toggle;
+
+			function mobileCheck(){
+				let mobile = (window.innerWidth < 1025 && window.matchMedia("(orientation: landscape)").matches ? false : true);
+
+				return (window.innerWidth < 1025 ? mobile : !mobile);
+			}
+
+			window.addEventListener('load', () => {
+				media = document.getElementsByClassName('media');
+				toggle = document.querySelector('.section-main .controls .toggle');
+
+				intro();
+				mainMedia();
+				mainScrollAni();
+				$('.brand-list li').mouseover(function(){
+					$('.big-thumb li').removeClass('on');
+					$('.brand-list li').removeClass('on');
+					$('.big-thumb li[data-id="'+$(this).attr('data-id')+'"]').addClass('on');
+					$('.brand-list li[data-id="'+$(this).attr('data-id')+'"]').addClass('on');
+				});
+			});
+			window.matchMedia("(orientation: portrait)").addEventListener("change", e => {
+				const portrait = e.matches;
+
+				toggle.textContent = '';
+				toggle.dataset.state = 'muted';
+
+				if (portrait) {
+					media[0].muted = true;
+					if(!media[1].muted){
+						media[1].muted = false;
+					}
+				} else {
+					media[1].muted = true;
+					if(!media[0].muted){
+						media[0].muted = false;
+					}
+				}
+			});
+			window.addEventListener('resize', () => ScrollTrigger.refresh());
+
+
+			// Intro
+			function intro(){
+				$('.loading').addClass('black');
+
+				setTimeout( function() {
+					$('.load_logo').addClass('show');
+				},600 );
+
+				setTimeout( function() {
+					$('.load_logo').addClass('hide');
+				},3000 );
+
+				setTimeout( function() {
+					$('.loading').addClass('hide');
+					media[1].play();
+					media[0].play();
+				}, 3500 );
+
+				setTimeout( function() {
+					$('.header').removeClass('hide');
+					$('.section-main .controls').addClass('show');
+				},4500 );
+			}
+
+
+
+			// mainMedia
+			function mainMedia(){
+				toggle.addEventListener('click', (e) => {
+					const toggle = e.target;
+					const state = toggle.dataset.state;
+
+					if(state === 'muted'){
+						toggle.textContent = ' ';
+						toggle.dataset.state = 'unmuted';
+						if(mobileCheck()){
+							media[1].muted = false;
+						} else {
+							media[0].muted = false;
+						}
+					}else{
+						toggle.textContent = ' ';
+						toggle.dataset.state = 'muted';
+						if(mobileCheck()){
+							media[1].muted = true;
+						} else {
+							media[0].muted = true;
+						}
+					}
+				});
+
+				const heroTl = gsap.timeline({
+					scrollTrigger: {
+						trigger: '.sec-about',
+						start: 'top bottom',
+						end: 'top top',
+						scrub: true,
+						onUpdate: (self) => onUpdate(self)
+					}
+				});
+				function onUpdate(self){
+					const progress = self.progress;
+					if(toggle.dataset.state === 'muted'){
+						return;
+					}
+					if(mobileCheck()){
+						media[1].muted = progress > 0.5 ? true : false;
+					} else {
+						media[0].muted = progress > 0.5 ? true : false;
+					}
+				}
+			}
+
+
+
+
+			// mainScrollAni
+			function mainScrollAni(){
+
+				const mediaQuery = window.matchMedia("(max-width: 950px)");
+
+				// mediaQuery start
+				if (mediaQuery.matches) {
+
+					// mobile start
+					gsap.set(".bg-block", { clipPath: 'polygon(49.95% 50%, 50.05% 50%, 50.05% 50%, 49.95% 50%)' })
+					var tl = gsap.timeline({
+						scrollTrigger: {
+							trigger: ".sec-about",
+							scrub: 1,
+							pin: ".sec-about",
+							end: "+=300%",
+						},
+					})
+					tl.to(".about-tit", {
+						onStart: function() {
+							$(this.targets()[0]).addClass("active");
+						},
+						onReverseComplete: function() {
+							$(this.targets()[0]).removeClass("active");
+						},
+					})
+							.to(".about-tit", { alpha: 0 ,duration:2, delay:1,})
+							.to(".bg-block", { clipPath: 'polygon(49.95% 30%, 50.05% 30%, 50.05% 70%, 49.95% 70%)' ,duration:1})
+							.to(".bg-block .bg", { opacity:1, duration:2, delay:-1})
+							.to(".bg-block", { clipPath: 'polygon(34% 30%, 66% 30%, 66% 70%, 34% 70%)' ,duration:2})
+							.to(".line-frames", { alpha: 1, duration:0.5, delay:-1, })
+							.to(".bg-block", { clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',duration:7, })
+							.to(".frames-wr:not(.reverse)", { x: '-100%', duration:7, delay:-7})
+							.to(".frames-wr.reverse", { x: '100%',duration:7, delay:-7 })
+							.to(".frames-wr", { padding: "0" ,duration:7, delay:-7 })
+							.to(".bg-block .bg", { transform:'scale(1.4)', duration:7, delay:-7 })
+							.to(".bg-block ", { background:'#000', delay:-7  })
+							.to(".bg-block .bg", { opacity:'0.7', duration:2, delay:-7  })
+							.to(".about-desc", {
+								onStart: function () {
+									$(this.targets()[0]).addClass("active");
+								},
+								onReverseComplete: function () {
+									$(this.targets()[0]).removeClass("active");
+								},
+								delay:-5,
+							});
+
+					// line animation
+					const videoContainers = document.querySelectorAll(".video-container1");
+					videoContainers.forEach((container, index) => {
+						const video = container.querySelector(".bg-video1");
+						video.pause();
+						video.currentTime = 0;
+						let frame = 0;
+						const tl = gsap.timeline();
+						tl.add(
+								gsap.to(container, {
+									scrollTrigger: {
+										trigger: '.sec-brand',
+										scrub: 10,
+										start: "-=230%",
+										end: "+=100%",
+										onUpdate: ({ progress }) => {
+											frame = progress * video.duration;
+										}
+									},
+								}),
+								`lineFrames${index}`
+						);
+						setInterval(() => {
+							if (video.currentTime !== frame) video.currentTime = frame;
+						}, 1000);
+					});
+
+
+				} else {
+
+
+					// pc start
+					gsap.set(".bg-block", { clipPath: 'polygon(49.95% 50%, 50.05% 50%, 50.05% 50%, 49.95% 50%)' })
+					var tl = gsap.timeline({
+						scrollTrigger: {
+							trigger: ".sec-about",
+							scrub: 3,
+							pin: ".sec-about",
+							end: "+=400%",
+						},
+					})
+					tl.to(".about-tit", {
+						onStart: function() {
+							$(this.targets()[0]).addClass("active");
+						},
+						onReverseComplete: function() {
+							$(this.targets()[0]).removeClass("active");
+						},
+						delay:-1,
+					})
+							.to(".about-tit", { alpha: 0 , duration:0.2, delay:-0.5,  })
+							.to(".bg-block", { clipPath: 'polygon(49.95% 30vh, 50.05% 30vh, 50.05% 70vh, 49.95% 70vh)',duration:0.2,  })
+							.to(".bg-block .bg", { opacity:1,  delay:-1})
+							//.to(".bg-block", { clipPath: 'polygon(44% 30vh, 56% 30vh, 56% 70vh, 44% 70vh)' , duration:0.2,  })
+							.to(".bg-block", { clipPath: 'polygon(36% 10vh, 64% 10vh, 64% 90vh, 36% 90vh)' , duration:1,  })
+							.to(".line-frames", { alpha: 1,   duration:1, })
+							.to(".bg-block", { clipPath: 'polygon(0% 0vh, 100% 0vh, 100% 100vh, 0% 100vh)',duration:1, })
+							.to(".frames-wr:not(.reverse)", { x: '-100%', duration:1, delay:-1 })
+							.to(".frames-wr.reverse", { x: '100%',duration:1, delay:-1 })
+							.to(".frames-wr", { padding: "0" ,duration:1, delay:-1 })
+							.to(".bg-block .bg", { transform:'scale(1.4)', duration:1, delay:-1 })
+							.to(".bg-block ", { background:'#000', delay:-1  })
+							.to(".bg-block .bg", { opacity:'0.7', duration:1, delay:-1  })
+							.to(".about-desc", {
+								onStart: function () {
+									$(this.targets()[0]).addClass("active");
+								},
+								onReverseComplete: function () {
+									$(this.targets()[0]).removeClass("active");
+								},
+								delay:-0.5,
+							})
+							.to(".bg-block .bg", { opacity:'0.7', duration:1,  });
+
+					// line animation
+					const videoContainers = document.querySelectorAll(".video-container1");
+					videoContainers.forEach((container, index) => {
+						const video = container.querySelector(".bg-video1");
+						video.pause();
+						video.currentTime = 0;
+						let frame = 0;
+						const tl = gsap.timeline();
+						tl.add(
+								gsap.to(container, {
+									scrollTrigger: {
+										trigger: '.sec-brand',
+										scrub: 10,
+										start: "-=230%",
+										end: "+=100%",
+										onUpdate: ({ progress }) => {
+											frame = progress * video.duration;
+										},
+									},
+								}),
+								`lineFrames${index}`
+						);
+						setInterval(() => {
+							if (video.currentTime !== frame) video.currentTime = frame;
+						}, 1000);
+					});
+
+
+				}
+				// mediaQuery end
+
+
+
+				// brand animation
+				var tl = gsap.timeline({
+					scrollTrigger: {
+						trigger: ".sec-brand",
+						scrub: 0.5,
+						start: "top center",
+						end: "+=200%",
+						ease: "power1.inOut"
+					},
+				});
+				tl.fromTo(".brand-cont .big-thumb ul li .bg,.brand-cont .big-thumb ul li img", { y: 0 }, { y: 150 })
+				var tl = gsap.timeline({
+					scrollTrigger: {
+						trigger: ".sec-brand",
+						scrub: 1,
+						start: "top center",
+						end: "bottom bottom",
+					},
+				});
+				tl.to(".sec-brand", {
+					onStart: function () {
+						$(this.targets()[0]).addClass("active");
+					},
+					onReverseComplete: function () {
+						$(this.targets()[0]).removeClass("active");
+					},
+				})
+
+				// brand fix
+				var tl = gsap.timeline({
+					scrollTrigger: {
+						trigger: ".sec-brand",
+						scrub: 5,
+						start: "top top",
+						pin: true,
+						end: "+=100%",
+					},
+				});
+
+
+				// rolling text
+				gsap.registerPlugin(SplitText);
+
+				var rollingTit = document.querySelector('.rolling_tit');
+				var h2Elements = rollingTit.querySelectorAll('h2');
+
+				var tl = gsap.timeline({
+					scrollTrigger: {
+						trigger: ".pin",
+						scrub: 1,
+						start: "top top",
+						pin: ".rolling_tit",
+						endTrigger: ".sec-gallery",
+						end: "bottom bottom",
+						onLeave: () => tl.pause(),
+					},
+				});
+
+				h2Elements.forEach((h2, index) => {
+					var splitText = new SplitText(h2, { type: "chars" });
+					var chars = splitText.chars;
+
+					gsap.set(chars, { y: "100%"});
+
+					tl.to(chars, { y: "0%", duration: 0.8, stagger: 0.1 });
+
+					if (index < h2Elements.length - 1) {
+						tl.to(chars, { y: "-100%", duration: 0.8, stagger: 0.1 }, `h2-${index + 1}`);
+					}
+				});
+
+				// rolling images
+				gsap.utils.toArray('.img').forEach(box => {
+					gsap.fromTo(box, {
+					}, {
+						scrollTrigger: {
+							trigger: box,
+							start: 'top center',
+							scrub: true,
+							onToggle: function (self) {
+								if (self.isActive) {
+									box.classList.add('active');
+								} else {
+									box.classList.remove('active');
+								}
+							},
+						},
+					});
+				});
+
+			}
+
+		</script>
+		<!-- content end -->
+		<div th:replace="layout/fragments.html :: footer"></div>
+	</div><!-- smooth-content -->
+</div><!-- smooth-wrapper -->
+</body>
+</html>
+<!-- <div id="popup1" class="popup-container" style="top: 120px;left:100px;">
+    <div class="popup">
+        <div class="popup-body">
+            <div class="contents">
+                <a href="">
+                    <img src="/images/popup.jpg" alt="">
+                </a>
+            </div>
+        </div>
+        <div class="popup-foot">
+            <button class="button button-today-close" type="button">오늘 하루 열지 않기</button>
+            <button class="button button-close" type="button">닫기</button>
+        </div>
+    </div>
+</div> -->
+

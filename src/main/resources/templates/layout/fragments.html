@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<th:block th:fragment="head (title, description)">
+    <head>
+      <meta charset="UTF-8">
+      <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+      <meta name="keywords" content="" />
+      <meta name="description" th:content="${description}"/>
+      <meta property="og:type" content="" />
+      <meta property="og:url" content="" />
+      <meta property="og:title" th:content="${title}"/>
+      <meta property="og:image" content="/images/meta_img.jpg"/>
+      <meta property="og:description" th:content="${description}" />
+      <meta property="og:site_name" content="" />
+      <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+      <title th:text="${title}"></title>
+      <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+      <link rel="stylesheet" href="/common/css/common.css?ver=240130">
+      <script src="/common/js/gsap.min.js"></script>
+      <script src="/common/js/ScrollTrigger.min.js"></script>
+      <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
+      <script src="https://unpkg.com/@studio-freight/lenis@1.0.33/dist/lenis.min.js"></script>
+      <script src="/common/js/common.js?v=240130"></script>
+      <script src="/common/js/SplitText3.min.js"></script>
+      <script src="/common/js/jquery-1.11.2.min.js"></script>
+      <script>history.scrollRestoration = "manual"</script>
+    </head>
+</th:block>
+
+<th:block th:fragment="header (page)">
+    <header class="header">
+      <h1 class="logo">
+        <a href="/"></a>
+      </h1>
+      <nav class="nav">
+        <ul data-lenis-prevent>
+          <li>
+            <a th:href="@{/brand/overview}"><span>BRAND</span></a>
+            <ul>
+              <li th:classappend="${page == 'overview'}? on"><a th:href="@{/brand/overview}"><span>OVERVIEW</span></a></li>
+              <li th:classappend="${page == 'history'}? on"><a th:href="@{/brand/history}"><span>HISTORY</span></a></li>
+            </ul>
+          </li>
+          <li th:classappend="${page == 'value'}? on"><a th:href="@{/value}"><span>VALUE</span></a></li>
+          <li th:classappend="${page == 'project'}? on"><a th:href="@{/project}"><span>PROJECT</span></a></li>
+
+          <li>
+            <a th:href="@{/contact/news}"><span>CONTACT</span></a>
+            <ul>
+              <li th:classappend="${page == 'news'}? on"><a th:href="@{/contact/news}"><span>NEWS</span></a></li>
+              <li th:classappend="${page == 'inquiry'}? on"><a th:href="@{/contact/inquiry}"><span>INQUIRY</span></a></li>
+            </ul>
+          </li>
+        </ul>
+        <div class="nav-ft">
+          <a th:href="@{/terms/legal}">법적고지</a>
+          <a th:href="@{/terms/privacy}">이용약관</a>
+          <a th:href="@{/terms/terms}">개인정보처리방침</a>
+          <p>@<span id="headerThisYear">2024</span> 두산에너빌리티.</p>
+        </div>
+      </nav>
+      <div class="dim"></div>
+      <a id="mo_nav_btn" class="nav-bar" href="javascript:">
+        <span></span>
+        <span></span>
+      </a>
+    </header>
+</th:block>
+
+<th:block th:fragment="footer">
+    <footer id="footer" class="footer">
+      <div class="ft-link">
+        <a th:href="@{/terms/legal}">법적고지</a>
+        <a th:href="@{/terms/terms}">이용약관</a>
+        <a th:href="@{/terms/privacy}">개인정보처리방침</a>
+      </div>
+      <div class="ft-family">
+        <a href="#none">관련 사이트<i class="xi-angle-up-min"></i></a>
+        <ul>
+          <li><a href="https://www.doosan.com/kr" target="_blank" title="새창으로 열림">두산그룹</a></li>
+          <li><a href="https://www.doosanenerbility.com/kr" target="_blank" title="새창으로 열림">두산에너빌리티</a></li>
+        </ul>
+      </div>
+      <div class="ft-info">
+        <div class="ft-logo">
+          <a href="/"><img src="/images/ft_logo.png" alt=""></a>
+          <span class="ft-copy">@<span id="footerThisYear">2024</span> 두산에너빌리티.</span>
+        </div>
+        <p class="ps">본 사이트에 사용된 CG 및 일러스트, 이미지 등은 소비자의 이해를 돕기 위한 것으로 실제와 다를 수 있습니다.</p>
+      </div>
+      <div class="ft-to-top">
+        <a href="javascript:void(0);" title="상단으로"><i class="xi-arrow-up"></i></a>
+      </div>
+    </footer>
+
+  <script type='text/javascript' src='/common/js/s_code.js'></script>
+  <script type="text/javascript">
+    /************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+    var s_code=s.t();if(s_code)document.write(s_code);
+
+    let _date = new Date();
+    let fullYear = _date.getFullYear();
+    document.querySelector("#headerThisYear").innerText = fullYear;
+    document.querySelector("#footerThisYear").innerText = fullYear;
+  </script>
+
+</th:block>
+
+</html>
